@@ -2625,6 +2625,26 @@ body.page-home .skill-group:hover .chips span {
   flex-shrink: 0;
 }
 
+/* Experience: dates stacked over location, aligned to the right edge.
+   Line boxes mirror the left column so dates sit on the role line and
+   location sits on the company line. */
+.exp-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+
+.exp-right .exp-dates {
+  line-height: 1.6rem;
+  margin-bottom: 0.25rem;
+}
+
+.exp-right .exp-location {
+  line-height: 1.44rem;
+  margin: 0;
+}
+
 .exp-meta {
   font-size: 0.8rem;
   color: #666;
@@ -2656,14 +2676,33 @@ body.page-home .skill-group:hover .chips span {
     padding-top: 0.25rem;
     border-top: 1px solid #252525;
   }
+
+  .exp-right {
+    width: 100%;
+    align-items: flex-start;
+    order: 3;
+    padding-top: 0.25rem;
+    border-top: 1px solid #252525;
+  }
+
+  .exp-right .exp-dates,
+  .exp-right .exp-location {
+    width: auto;
+    order: 0;
+    padding-top: 0;
+    border-top: none;
+    text-align: left;
+  }
 }
 
 .exp-desc,
 ul.exp-desc {
   font-size: 0.9rem;
   color: #a0a0a0;
-  margin: 0 0 0.75rem;
+  margin: 0.5rem 0 0.75rem;
   line-height: 1.55;
+  text-align: justify;
+  hyphens: auto;
 }
 
 ul.exp-desc {
