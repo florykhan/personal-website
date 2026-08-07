@@ -6,6 +6,7 @@ const NARRATIVE_ROUTES = [
   { slug: 'gallery', page: 'gallery.html', home: './narrative/gallery.html' },
   { slug: 'sfu', page: 'sfu.html', home: './narrative/sfu.html' },
   { slug: 'synkron', page: 'synkron.html', home: './narrative/synkron.html' },
+  { slug: 'research', page: 'research.html', home: './narrative/research.html' },
   { slug: 'projects', page: 'projects.html', home: './narrative/projects.html' },
   { slug: 'next', page: 'next.html', home: './narrative/next.html' }
 ];

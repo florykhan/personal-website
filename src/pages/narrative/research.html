@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research — Computational geometry at SFU | Ilian Khankhalaev</title>
+  <link rel="icon" href="../../assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body data-narrative="research">
+  <div class="page-bg" aria-hidden="true"></div>
+  <nav class="nav-sticky">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">Ilian Khankhalaev</a>
+      <ul>
+        <li><a href="../index.html" class="active">Home</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../../assets/Ilian-Khankhalaev-Resume.pdf">Resume</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container narrative-page">
+    <p class="narrative-back-wrap">
+      <a href="../index.html#timeline" class="narrative-back">← Back to Home</a>
+    </p>
+
+    <header class="narrative-header">
+      <div class="narrative-header-row">
+        <h1 class="narrative-title">
+          <a href="https://www.sfu.ca/" class="narrative-title-link" target="_blank" rel="noopener noreferrer">SFU</a> — Research Software Contributor
+        </h1>
+        <a href="https://www.sfu.ca/" class="narrative-header-logo-link" aria-label="Simon Fraser University" target="_blank" rel="noopener noreferrer">
+          <img src="../../assets/icons/companies/sfu.png" alt="" class="narrative-header-logo" title="Simon Fraser University">
+        </a>
+      </div>
+      <p class="narrative-desc">Computational geometry applied to biomechanics — where engineering practice meets research problems.</p>
+    </header>
+
+    <section class="narrative-dated" aria-label="Narrative by period">
+      <article class="narrative-dated-block">
+        <span class="narrative-dated-label">Simon Fraser University (Jul 2026 — Present)</span>
+        <div class="narrative-dated-body">
+          <p>Research was the first time I worked on a problem where no reference implementation existed to compare against.</p>
+          <p>I develop a Python pipeline that registers skin meshes to underlying muscle and bone structures, working with anatomical meshes of 16,000+ vertices across 43 structures.</p>
+          <p>The work sits at the intersection of computational geometry and software engineering: signed distance functions, mesh deformation, collision handling, K-nearest surface blending, and Laplacian smoothing, all wired into Autodesk Maya so that modelling workflows can run automatically instead of by hand.</p>
+          <div class="narrative-dated-emphasis narrative-dated-emphasis-purple">
+            <p>Production code has requirements you can look up. Research code has requirements you have to discover.</p>
+            <p>Correctness here is geometric and visual, so progress depends on building tooling that makes results inspectable before it depends on writing more algorithms.</p>
+          </div>
+          <p>That shifted how I approach engineering in general: define the evaluation loop first, keep every step reproducible, and treat the pipeline itself as the product.</p>
+        </div>
+      </article>
+    </section>
+
+    <div class="narrative-content">
+      <section class="narrative-section">
+        <h2>Problem space</h2>
+        <ul>
+          <li><strong>Anatomical registration</strong><br>Attaching skin meshes to muscle and bone structures accurately enough for biomechanical simulation.</li>
+          <li><strong>Scale</strong><br>16,000+ vertex meshes across 43 anatomical structures, where manual attachment does not scale.</li>
+        </ul>
+      </section>
+      <section class="narrative-section">
+        <h2>How I contribute</h2>
+        <ul>
+          <li><strong>Geometry algorithms</strong><br>Signed distance functions, mesh deformation, and collision handling for anatomically valid attachment.</li>
+          <li><strong>Automation</strong><br>Python tooling around Autodesk Maya that turns a manual modelling workflow into a repeatable pipeline.</li>
+          <li><strong>Evaluation</strong><br>Comparing registration and smoothing strategies to see which produce stable, physically plausible results.</li>
+        </ul>
+      </section>
+      <section class="narrative-section">
+        <p>This stage connects the engineering habits I built in industry with problems that are still open — and it is where I learned how much of research is really careful software.</p>
+      </section>
+    </div>
+
+  </main>
+
+  <nav class="narrative-prev-next" aria-label="Narrative navigation">
+<a id="narrative-prev" href="#" class="narrative-btn narrative-btn-prev" aria-label="Previous"><img src="../../assets/icons/back.png" alt="" width="20" height="20"></a>
+    <a id="narrative-next" href="#" class="narrative-btn narrative-btn-next" aria-label="Next"><img src="../../assets/icons/next.png" alt="" width="20" height="20"></a>
+  </nav>
+
+  <script src="../../scripts/resume-preview.js"></script>
+  <script src="../../scripts/narrative-data.js"></script>
+  <script src="../../scripts/narrative-nav.js"></script>
+</body>
+</html>
