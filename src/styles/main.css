@@ -3589,6 +3589,10 @@ body.page-projects .project-detail .project-meta-links a:focus-visible {
   margin: 0;
 }
 
+.project-detail-section p + p {
+  margin-top: 1.6em;
+}
+
 .project-detail .results-placeholder {
   font-size: 0.9rem;
   color: #666;
@@ -3841,6 +3845,152 @@ body.page-projects .project-detail .project-meta-links a:focus-visible {
 .project-card-research {
   color: #c8e8f2;
   background-color: #2a4048;
+}
+
+.project-card-award {
+  color: #f7e3b5;
+  background-color: #4a4030;
+}
+
+/* Crown drawn above an award-winning project title (detail page and cards) */
+.project-title-crowned {
+  position: relative;
+  display: inline-block;
+}
+
+.project-title-crown {
+  position: absolute;
+  top: -0.42em;
+  right: -0.72em;
+  width: 1.05em;
+  height: 0.88em;
+  color: #e2be74;
+  transform: rotate(16deg);
+  transform-origin: 50% 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.project-title-crown path {
+  stroke-dasharray: 120;
+  stroke-dashoffset: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .project-title-crown path {
+    stroke-dashoffset: 120;
+    animation: project-crown-draw 900ms ease-out 400ms forwards;
+  }
+
+  .project-title-crown path:last-child {
+    animation-delay: 1100ms;
+  }
+
+  .project-title-crown {
+    animation: project-crown-settle 4s ease-in-out 1.6s infinite;
+  }
+}
+
+@keyframes project-crown-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes project-crown-settle {
+  0%, 100% {
+    transform: rotate(16deg) translateY(0);
+  }
+  50% {
+    transform: rotate(16deg) translateY(-2px);
+  }
+}
+
+/* Project detail: hackathon / award recognition */
+.project-detail .project-award {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1.4rem;
+  padding: 0.85rem 1.1rem;
+  border: 1px solid rgba(226, 190, 116, 0.28);
+  border-radius: 8px;
+  background: rgba(226, 190, 116, 0.06);
+}
+
+.project-detail .project-award-icon {
+  flex-shrink: 0;
+  color: #e2be74;
+}
+
+.project-detail .project-award-title {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #f7e3b5;
+  line-height: 1.4;
+}
+
+.project-detail .project-award-meta {
+  display: block;
+  font-size: 0.85rem;
+  color: #a0a0a0;
+  line-height: 1.5;
+}
+
+.project-detail .project-award-panel {
+  margin-top: 1rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid rgba(226, 190, 116, 0.22);
+  border-radius: 8px;
+  background: rgba(226, 190, 116, 0.05);
+}
+
+.project-detail .project-award-facts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem 1.5rem;
+  margin: 0;
+}
+
+@media (min-width: 640px) {
+  .project-detail .project-award-facts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.project-detail .project-award-facts dt {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #8a8a8a;
+  margin-bottom: 0.25rem;
+}
+
+.project-detail .project-award-facts dd {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #e0e0e0;
+  line-height: 1.5;
+}
+
+.project-detail .project-figure-note {
+  margin: 1rem 0 0;
+  font-size: 0.9rem;
+  color: #a0a0a0;
+  text-align: left;
+}
+
+.project-detail .project-figure-note a {
+  color: var(--accent-link);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.project-detail .project-figure-note a:hover,
+.project-detail .project-figure-note a:focus-visible {
+  color: var(--accent-link-hover);
 }
 
 /* ========================================

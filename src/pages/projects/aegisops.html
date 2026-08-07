@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AegisOps — AI-Powered Cloud Operations | Ilian Khankhalaev</title>
+  <link rel="icon" href="../../assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body class="page-projects">
+  <div class="page-bg" aria-hidden="true"></div>
+  <nav class="nav-sticky">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">Ilian Khankhalaev</a>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../projects.html" class="active">Projects</a></li>
+        <li><a href="../../assets/Ilian-Khankhalaev-Resume.pdf">Resume</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container project-detail">
+    <p><a href="../projects.html" class="project-back">← Back to Projects</a></p>
+    <header class="project-header">
+      <h1 class="project-title"><span class="project-title-crowned">AegisOps<svg class="project-title-crown" viewBox="0 0 24 20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 16.5 L4.1 4.5 L9 10 L12 2.5 L15 10 L19.9 4.5 L21 16.5 Z"/><path d="M4.6 19 H19.4"/></svg></span></h1>
+      <p class="project-summary">AI-powered cloud operations platform for proactive, cost-, latency-, and sustainability-aware workload management. Monitors 49 Microsoft Azure regions, detects degrading regions before they fail, and generates guardrailed workload-redistribution plans that an operator can approve or reject.</p>
+      <div class="project-award">
+        <svg class="project-award-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M17 5h2.5a1.5 1.5 0 0 1 0 5H17"/><path d="M7 5H4.5a1.5 1.5 0 0 0 0 5H7"/></svg>
+        <span class="project-award-text">
+          <strong class="project-award-title">Microsoft AI Hackathon Grand Champion — Overall Best Project</strong>
+          <span class="project-award-meta">Highest overall award at the inaugural Microsoft AI Hackathon, hosted at Microsoft Headquarters in Redmond, WA.</span>
+        </span>
+      </div>
+      <div class="project-meta-row">
+        <div class="project-meta-links">
+          <a href="https://github.com/hackathon-orcas/vslhq26-orcas" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
+          <a href="https://youtu.be/r0RkZeW34Mo" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+        </div>
+        <div class="project-detail-labels">
+          <span class="project-card-label project-card-award">Grand Champion</span>
+          <img src="../../assets/icons/team.png" alt="" class="project-card-logo" width="24" height="24" aria-hidden="true" title="Team Project">
+        </div>
+      </div>
+    </header>
+
+    <section class="project-detail-section">
+      <div class="project-video-wrapper">
+        <iframe src="https://www.youtube.com/embed/r0RkZeW34Mo" title="AegisOps Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section class="project-detail-section">
+      <h2>Problem &amp; Context</h2>
+      <p>Modern cloud platforms often react to outages after they happen, when recovery is already urgent and expensive. In reality, infrastructure usually shows warning signs first, such as increasing latency, rising resource utilization, or declining service health, but deciding how to respond is complex. Every workload redistribution involves trade-offs between latency, cost, capacity, sustainability, and service availability.</p>
+      <p>AegisOps was built to help operators make those decisions proactively. By monitoring 49 Azure regions and analyzing live telemetry with AI, it recommends where workloads should run before a disruption becomes a major outage.</p>
+    </section>
+
+    <section class="project-detail-section">
+      <h2>What It Does</h2>
+      <ul class="project-feature-list">
+        <li><strong>Global infrastructure view</strong> — Monitors 49 Microsoft Azure regions with continuously updating telemetry for each region</li>
+        <li><strong>Multi-signal health tracking</strong> — Latency, capacity and load, operational cost, carbon intensity, SLA/service-availability risk, and overall regional health</li>
+        <li><strong>Predictive degradation detection</strong> — Identifies regions trending toward failure from telemetry, rather than waiting for a complete outage</li>
+        <li><strong>AI infrastructure reasoning</strong> — Uses GPT-4o through GitHub Models to interpret regional state and generate workload-redistribution recommendations</li>
+        <li><strong>Constraint-based candidate evaluation</strong> — Scores destination regions against latency, cost, sustainability impact, available capacity, and availability</li>
+        <li><strong>Guardrails</strong> — Rejects unsafe candidate regions before any remediation plan is shown to the operator</li>
+        <li><strong>Operator in the loop</strong> — Proposed remediation can be approved or rejected; a rejection produces a revised recommendation or escalation</li>
+        <li><strong>Catastrophic scenarios</strong> — Supports sudden regional outages with no preceding warning signals, and can demonstrate full regional failure when remediation is ignored</li>
+        <li><strong>Interactive 3D globe</strong> — Visualizes Azure regions, their health, and inter-region relationships in real time</li>
+      </ul>
+      <figure class="project-screenshot">
+        <img src="../../assets/projects/AegisOps/Dashboard.png" alt="AegisOps command center: agent reasoning panel, operator console, and 3D globe showing datacenters, power plants, and traffic routes" width="2940" height="1646">
+        <figcaption>The AegisOps command center. The agent reasoning panel (left) streams the model's assessment as it rejects unsafe candidate regions and drafts a recovery plan; the operator console below it holds pending plans for approval or rejection. The globe renders datacenters, real power plants, health states, and active traffic routes, with alerts for degraded and downed regions surfaced at the top.</figcaption>
+      </figure>
+    </section>
+
+    <section class="project-detail-section">
+      <h2>Data &amp; Infrastructure Model</h2>
+      <p>The platform is grounded in real infrastructure data rather than arbitrary mock values, which is what makes its recommendations defensible as operational decisions:</p>
+      <ul class="project-feature-list">
+        <li><strong>49 Azure regions</strong> — The full region set forms the topology that workloads can move between</li>
+        <li><strong>Azure inter-region latency datasets</strong> — Processed to model region-to-region round-trip time, so relocation proposals reflect real network distance</li>
+        <li><strong>Global Power Plant Database</strong> — 34,000+ power plants processed and geographically filtered so each Azure region is associated only with nearby, relevant power sources</li>
+        <li><strong>Regional power and grid characteristics</strong> — Used to model carbon intensity and support sustainability-aware placement decisions</li>
+        <li><strong>Live and simulated telemetry</strong> — Continuously updating per-region signals layered on top of the static topology</li>
+      </ul>
+      <p>Combining cloud-region topology, measured latency, and energy infrastructure with live telemetry means a recommendation to shift workloads can be justified on all the axes an operator actually cares about — not just whether a region is up.</p>
+    </section>
+
+    <section class="project-detail-section">
+      <h2>Architecture / How It Works</h2>
+      <p>A Python telemetry simulator continuously produces per-region state, which flows into an <strong>ASP.NET Core</strong> backend that maintains the infrastructure graph — regions, inter-region latency, associated power sources — alongside current telemetry. When a region's signals indicate elevated risk, the backend assembles that context and hands it to <strong>GPT-4o via GitHub Models</strong>, which reasons over the affected region and its candidate destinations. Candidates then pass through a guardrail layer that rejects any option violating latency, capacity, cost, or availability constraints, so unsafe suggestions never reach the operator. Surviving candidates become a ranked remediation plan, which is surfaced in the <strong>React</strong> dashboard and on the interactive 3D globe for the operator to approve or reject. A rejection feeds back into the loop and produces a revised recommendation.</p>
+      <p>The flow end to end: telemetry simulator and regional state → ASP.NET Core backend → infrastructure graph and telemetry → GPT-4o reasoning → guardrails and candidate evaluation → operator recommendation → React globe and dashboard.</p>
+    </section>
+
+    <section class="project-detail-section">
+      <h2>Tech Stack</h2>
+      <div class="tech-tags">
+        <span>C#</span>
+        <span>TypeScript</span>
+        <span>Python</span>
+        <span>ASP.NET Core</span>
+        <span>.NET 10</span>
+        <span>React 19</span>
+        <span>Vite</span>
+        <span>react-globe.gl</span>
+        <span>Three.js</span>
+        <span>GitHub Models (GPT-4o)</span>
+        <span>pandas</span>
+        <span>Kestrel</span>
+        <span>Docker</span>
+        <span>Azure region &amp; latency datasets</span>
+      </div>
+      <p>Local development ran on Vite, Kestrel, and the Python telemetry simulator, with Docker for containerization. The application is Azure-ready but was not deployed to Azure during the hackathon; Azure is central to the infrastructure model and datasets rather than to the hosting.</p>
+    </section>
+
+    <section class="project-detail-section">
+      <h2>Hackathon &amp; Recognition</h2>
+      <p>AegisOps was built over two days at the inaugural Microsoft AI Hackathon, hosted at Microsoft Headquarters in Redmond, Washington. The competition brought together students alongside experienced software engineers and industry professionals to develop innovative AI solutions across multiple categories, including AI agents, workflow automation, Azure-powered applications, Microsoft technologies, and enterprise AI. Our three-person team from Simon Fraser University was awarded Grand Champion (Overall Best Project), the single highest overall award at the event, recognizing the strongest project across the entire competition.</p>
+      <div class="project-award-panel">
+        <dl class="project-award-facts">
+          <div>
+            <dt>Award</dt>
+            <dd>Grand Champion — Overall Best Project (highest overall award)</dd>
+          </div>
+          <div>
+            <dt>Event</dt>
+            <dd>Inaugural Microsoft AI Hackathon</dd>
+          </div>
+          <div>
+            <dt>Venue</dt>
+            <dd>Microsoft Headquarters — Redmond, WA</dd>
+          </div>
+          <div>
+            <dt>Build time</dt>
+            <dd>2 days, three-person SFU team</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="project-screenshots-grid project-screenshots-grid--2">
+        <figure class="project-screenshot">
+          <img src="../../assets/projects/AegisOps/Certificate (Microsoft).jpeg" alt="Excellence in AI Innovation Award certificate held in front of the Microsoft sign at Microsoft headquarters in Redmond" width="4284" height="5712" loading="lazy">
+          <figcaption>The Excellence in AI Innovation Award, presented to Team Orcas as Hackathon Grand Champion for overall best project across innovation, execution, and impact.</figcaption>
+        </figure>
+        <figure class="project-screenshot">
+          <img src="../../assets/projects/AegisOps/Ilian with awards.jpeg" alt="Ilian Khankhalaev seated beside the Grand Champion prize cheque and award certificates at Microsoft headquarters" width="4284" height="5712" loading="lazy">
+          <figcaption>With the Grand Champion prize and certificates at Microsoft headquarters in Redmond after the closing ceremony.</figcaption>
+        </figure>
+      </div>
+      <p class="project-figure-note">Check out the <a href="https://www.linkedin.com/posts/ilian-khankhalaev_microsoft-vslive-ai-ugcPost-7489726990556528640--zF3/" target="_blank" rel="noopener noreferrer">LinkedIn post</a> for the full story.</p>
+    </section>
+
+    <section class="project-detail-section">
+      <h2>Key Takeaways</h2>
+      <p>AegisOps brought together distributed systems thinking and applied AI under a hard two-day deadline. The parts that mattered most:</p>
+      <ul class="project-feature-list">
+        <li>Modeling globally distributed cloud infrastructure as a graph of regions with real latency, capacity, and energy characteristics</li>
+        <li>Using AI for operational decision support while keeping a human in the approval loop</li>
+        <li>Processing real-time telemetry into signals that are actionable before failure, not just after it</li>
+        <li>Fusing multiple independent datasets — region topology, inter-region latency, and global power infrastructure — into one coherent decision model</li>
+        <li>Constraining AI output with guardrails so unsafe recommendations are filtered before they reach an operator</li>
+        <li>Full-stack engineering across C#, ASP.NET Core, React, TypeScript, and Python, plus 3D geospatial visualization</li>
+        <li>Scoping and shipping a complete, demonstrable system in two days</li>
+      </ul>
+    </section>
+
+    <p style="margin-top: 2rem;">
+      <a href="../projects.html" class="project-back">← Back to Projects</a>
+    </p>
+  </main>
+  <script src="../../scripts/resume-preview.js"></script>
+</body>
+</html>
