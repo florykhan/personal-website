@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ArbScanner | Ilian Khankhalaev</title>
+  <title>ArbScanner — Prediction Market Arbitrage Platform | Ilian Khankhalaev</title>
   <link rel="icon" href="../../assets/icons/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="../../styles/main.css">
 </head>
@@ -24,44 +24,72 @@
   <main class="container project-detail">
     <p><a href="../projects.html" class="project-back">← Back to Projects</a></p>
     <header class="project-header">
-      <h1 class="project-title">ArbScanner</h1>
-      <p class="project-summary">Placeholder: ML-powered arbitrage scanning project (in progress).</p>
+      <h1 class="project-title">ArbScanner — Prediction Market Arbitrage Platform</h1>
+      <p class="project-summary">A full-stack platform that aggregates prediction markets across multiple exchanges, detects potential arbitrage opportunities, and provides operators with real-time market insights through an interactive dashboard.</p>
       <div class="project-meta-row">
         <div class="project-meta-links">
+          <a href="https://arb-scanner-mauve.vercel.app" target="_blank" rel="noopener noreferrer">Live Demo</a>
           <a href="https://github.com/florykhan/ArbScanner" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
+          <a href="https://youtu.be/L8lcaHaVrVA" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
         </div>
         <div class="project-detail-labels">
-          <span class="project-card-label project-card-in-progress">In Progress</span>
+          <span class="project-card-label project-card-demo">Demo</span>
           <img src="../../assets/icons/team.png" alt="" class="project-card-logo" width="24" height="24" aria-hidden="true" title="Team Project">
         </div>
       </div>
     </header>
 
     <section class="project-detail-section">
-      <h2>Problem &amp; Context</h2>
-      <p>Identifying arbitrage opportunities across markets or instruments often requires scanning large amounts of data and applying ML or rule-based logic. This project aims to build an ML-powered arbitrage scanning tool to detect and quantify such opportunities. It is a team project currently in progress.</p>
+      <div class="project-video-wrapper">
+        <iframe src="https://www.youtube.com/embed/L8lcaHaVrVA" title="ArbScanner Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
     </section>
 
     <section class="project-detail-section">
-      <h2>What We&rsquo;re Building</h2>
+      <h2>Problem &amp; Context</h2>
+      <p>Prediction markets are fragmented across multiple exchanges, making it difficult to compare equivalent contracts and identify pricing inefficiencies. ArbScanner brings these markets together into a single platform, automatically mapping related events and highlighting potential arbitrage opportunities for further investigation.</p>
+    </section>
+
+    <section class="project-detail-section">
+      <h2>What It Does</h2>
       <ul class="project-feature-list">
-        <li>Data ingestion and preprocessing for price or rate feeds</li>
-        <li>ML or heuristic logic to flag potential arbitrage situations</li>
-        <li>Visualization or reporting of opportunities and confidence</li>
+        <li><strong>Multi-exchange aggregation</strong> — Syncs markets from Polymarket, Manifold, and Kalshi into a single catalog</li>
+        <li><strong>Market matching</strong> — Maps semantically equivalent contracts across venues so they can be compared directly</li>
+        <li><strong>Arbitrage detection</strong> — Runs a deterministic engine over trusted mappings and raises alerts on negative-risk spreads</li>
+        <li><strong>Interactive dashboard</strong> — React interface for browsing events, mappings, and active alerts</li>
+        <li><strong>REST API</strong> — FastAPI backend exposing the catalog, mappings, and alerts to any client</li>
       </ul>
+      <figure class="project-screenshot">
+        <img src="../../assets/projects/ArbScanner.png" alt="ArbScanner dashboard showing the market scan bar, market overview metrics, core capabilities, and spread and arbitrage signal charts" width="2222" height="1216" loading="lazy">
+        <figcaption>The operator dashboard. A natural-language scan bar drives market queries, the overview strip tracks contracts, connected venues, average quoted spread, and the best current edge, and the analytics charts show how spreads and arbitrage signals move over time.</figcaption>
+      </figure>
     </section>
 
     <section class="project-detail-section">
       <h2>Tech Stack</h2>
       <div class="tech-tags">
+        <span>React</span>
+        <span>Vite</span>
+        <span>TypeScript</span>
+        <span>Tailwind CSS</span>
         <span>Python</span>
-        <span>ML</span>
+        <span>FastAPI</span>
+        <span>MySQL</span>
+        <span>Vercel</span>
+        <span>Render</span>
+        <span>Railway</span>
+        <span>Google Gemini</span>
       </div>
     </section>
 
     <section class="project-detail-section">
+      <h2>Architecture / How It Works</h2>
+      <p>Sync jobs periodically pull markets from each supported exchange and normalize them into a shared schema stored in <strong>MySQL</strong>. Equivalent contracts are matched across venues using deterministic title and alias rules, with optional <strong>Gemini</strong>-assisted matching for harder cases. The arbitrage engine then evaluates only the trusted mappings and records any opportunities it finds. Everything is served through the <strong>FastAPI</strong> backend and consumed by the <strong>React</strong> dashboard, with the frontend hosted on Vercel, the API on Render, and the database on Railway.</p>
+    </section>
+
+    <section class="project-detail-section">
       <h2>Key Takeaways</h2>
-      <p>This project is in active development. Screenshots and detailed results will be added as the work progresses.</p>
+      <p>ArbScanner covers a full production slice: relational schema design for multi-venue market data, a REST API over that data, integration of several independent third-party sources with inconsistent formats, and a deployed frontend, API, and database split across Vercel, Render, and Railway. The matching layer was the most interesting constraint — mapping contracts conservatively matters more than mapping many of them, since a wrong mapping produces a false opportunity.</p>
     </section>
 
     <p style="margin-top: 2rem;">
