@@ -2645,6 +2645,11 @@ body.page-home .skill-group:hover .chips span {
   margin: 0;
 }
 
+/* Entries with a minor line push the company name down one block */
+.exp-right--minor .exp-location {
+  margin-top: 1.9rem;
+}
+
 .exp-meta {
   font-size: 0.8rem;
   color: #666;
