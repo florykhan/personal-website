@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skin-to-Muscle Registration Pipeline | Ilian Khankhalaev</title>
+  <link rel="icon" href="../../assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body class="page-projects">
+  <div class="page-bg" aria-hidden="true"></div>
+  <nav class="nav-sticky">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">Ilian Khankhalaev</a>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../projects.html" class="active">Projects</a></li>
+        <li><a href="../../assets/Ilian-Khankhalaev-Resume.pdf">Resume</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container project-detail">
+    <p><a href="../projects.html" class="project-back">← Back to Projects</a></p>
+    <header class="project-header">
+      <h1 class="project-title">Skin-to-Muscle Registration Pipeline</h1>
+      <p class="project-summary">An ongoing undergraduate research project at Simon Fraser University that automates skin-to-muscle registration for biomechanical facial models. The pipeline is written in Python and runs inside Autodesk Maya, using computational geometry to fit a high-resolution skin mesh over the internal anatomy beneath it. The aim is to replace slow, manual shrink-wrap and cleanup work with a reproducible automated workflow.</p>
+      <div class="project-meta-row">
+        <div class="project-meta-links">
+          <a href="https://github.com/florykhan/skin-to-muscle-registration" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
+        </div>
+        <div class="project-detail-labels">
+          <span class="project-card-label project-card-research">Research</span>
+          <a href="https://www.sfu.ca" target="_blank" rel="noopener noreferrer" aria-label="Simon Fraser University"><img src="../../assets/icons/companies/sfu-square.png" alt="SFU" class="project-card-logo project-card-logo-sfu" width="24" height="24" title="Simon Fraser University"></a>
+        </div>
+      </div>
+    </header>
+
+    <section class="project-detail-section">
+      <figure class="project-screenshot">
+        <img src="../../assets/projects/skin-registration/M1_vertices.png" alt="Three views of the facial skin mesh wireframe in Maya — angled left, front, and angled right — with individual vertices highlighted where the detector flagged possible registration artifacts" width="2286" height="803">
+        <figcaption>The registered skin mesh in Maya, shown from three angles. Highlighted vertices are the regions the artifact detector flagged as possible registration defects.</figcaption>
+      </figure>
+    </section>
+
+    <section class="project-detail-section">
+      <h2>Problem &amp; Context</h2>
+      <p>A biomechanical facial model is built from an outer skin mesh plus a large set of internal structures — muscles, fat compartments, cartilage, and bone. Before the model can be simulated, the skin has to be registered over that anatomy so it sits on the internal geometry in a way that stays anatomically plausible when the face moves.</p>
+      <p>Today that step is largely manual. An artist shrink-wraps the skin onto the anatomy and then cleans up the places where the result looks wrong, which is slow, hard to reproduce, and difficult to scale across models. The scale is the core of the problem: roughly <strong>16,000+ skin vertices</strong> have to be positioned relative to about <strong>43 anatomical structures</strong>. This project focuses on automating that geometry-processing bottleneck.</p>
+    </section>
+
+    <section class="project-detail-section">
+      <h2>What It Does</h2>
+      <ul class="project-feature-list">
+        <li><strong>Automated registration</strong> — Fits a high-resolution skin mesh over the internal facial anatomy without manual shrink-wrapping</li>
+        <li><strong>Anatomy-aware geometry</strong> — Uses distance and closest-surface queries against muscles, fat compartments, and bone</li>
+        <li><strong>Artifact detection</strong> — Identifies regions where registration introduces geometric irregularities in the skin surface</li>
+        <li><strong>Localized cleanup</strong> — Applies correction only to the flagged regions instead of smoothing the entire surface</li>
+        <li><strong>Maya integration</strong> — Runs inside the existing Autodesk Maya workflow so intermediate results can be inspected visually</li>
+      </ul>
+    </section>
+
+    <section class="project-detail-section">
+      <h2>Approach</h2>
+      <p>The pipeline runs as a sequence of stages: skin mesh → anatomical geometry queries → registration and deformation → artifact detection → localized smoothing → evaluation. Each skin vertex is evaluated against the anatomy beneath it using <strong>signed distance functions</strong> and closest-surface queries, which give both the nearest structure and which side of it the vertex sits on. <strong>K-nearest surface blending</strong> (K = 5) lets a vertex be influenced by several nearby structures rather than snapping to one, <strong>Laplacian smoothing</strong> keeps the result continuous across the surface, and collision handling prevents the skin from passing through the anatomy it is fitted to.</p>
+      <p>Detecting where registration has gone wrong turned out to be the harder half of the problem, so it has been approached as a series of experiments kept as reproducible milestones. These progressed from a Laplacian-based baseline that flags strong local deviation, through a comparison against a supplied reference mesh, to multi-scale detection that checks whether a deviation persists across neighborhood sizes. The current direction generates the reference surface from the underlying anatomy itself using SDF-based projection — preserving skin topology and vertex correspondence — and combines it with the multi-scale analysis and filtering from the earlier milestones. The next stage is applying the existing localized smoothing only to the flagged regions and evaluating the corrected mesh over repeated registration passes.</p>
+      <figure class="project-screenshot">
+        <video src="../../assets/projects/skin-registration/M1_vertices.mp4" autoplay loop muted playsinline controls preload="metadata" aria-label="Rotating view of the registered skin mesh in Maya with flagged artifact vertices highlighted"></video>
+        <figcaption>Detector output rotating around the head. Clusters around the brow, cheeks, and jaw are the kind of case the later anatomy-aware milestones aim to separate from naturally curved geometry.</figcaption>
+      </figure>
+    </section>
+
+    <section class="project-detail-section">
+      <h2>Tech Stack</h2>
+      <div class="tech-tags">
+        <span>Python</span>
+        <span>Autodesk Maya</span>
+        <span>Maya Python API</span>
+        <span>Computational Geometry</span>
+        <span>Geometry Processing</span>
+        <span>Mesh Processing</span>
+        <span>Signed Distance Functions</span>
+        <span>NumPy</span>
+        <span>Biomechanical Simulation</span>
+      </div>
+    </section>
+
+    <section class="project-detail-section">
+      <h2>Key Takeaways</h2>
+      <p>The interesting part of this work is not implementing a single geometry algorithm — it is deciding what "correct" registration means when there is no perfect ground-truth surface to compare against. Some artifacts are sharp local defects that stand out immediately; others are perfectly smooth in a mathematical sense but anatomically wrong, so purely local curvature measures flag natural features like lips and nostrils while missing the real problems.</p>
+      <p>That pushes the work toward combining local geometry with anatomical context, and toward treating each detection method as an experiment to be implemented, evaluated against the previous one, and kept reproducible rather than replaced. Much of the engineering effort goes into making intermediate results inspectable so those comparisons are possible at all.</p>
+    </section>
+
+    <p style="margin-top: 2rem;">
+      <a href="../projects.html" class="project-back">← Back to Projects</a>
+    </p>
+  </main>
+  <script src="../../scripts/resume-preview.js"></script>
+</body>
+</html>
