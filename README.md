@@ -170,7 +170,7 @@ Possible improvements for future iterations:
 
 ## 🧾 License
 
-MIT License, feel free to use and modify with attribution. See the [`LICENSE`](./LICENSE) file for full details
+MIT License, feel free to use and modify with attribution. See the [`LICENSE`](./LICENSE) file for full details.
 
 ---
 
